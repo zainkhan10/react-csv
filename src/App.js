@@ -1,7 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { CSVLink } from "react-csv";
 
 function App() {
+  const data2 = [
+    {
+      firstName: "zain",
+      lastName: "khan",
+    },
+    {
+      firstName: "john",
+      lastName: "doe",
+    },
+  ];
+  const data = [
+    {
+      firstName: "zain",
+      lastName: "khan",
+    },
+    {
+      firstName: "john",
+      lastName: "doe",
+    },
+  ];
+  const merged = [...data, ...data2]
+  const header = [
+    {
+      label: "First Name",
+      key: "firstName",
+    },
+    {
+      label: "Last Name",
+      key: "lastName",
+    },
+  ];
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +49,14 @@ function App() {
         >
           Learn React
         </a>
+        <CSVLink
+          filename={"inventory.csv"}
+          target="_blank"
+          data={data}
+          headers={header}
+        >
+          <button>Export CSV</button>
+        </CSVLink>
       </header>
     </div>
   );
